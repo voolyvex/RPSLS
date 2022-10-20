@@ -28,6 +28,7 @@ def main():
     new_game = Game()
     while new_game.winner == False:
         new_game.run_game()
+        
     print("The game has ended!\nWe have a winner!")
     print(f"Game mode is {new_game.game_mode}")
     print(gesture_list)
