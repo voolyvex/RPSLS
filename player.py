@@ -1,15 +1,16 @@
 from random import choice
+from gesture import gesture_list
 
-gesture_list = ["Rock","Paper","Scissors","Lizard","Spock"]
 human = "Human"
 ai = "AI"
 
 class Player:
     
-    def __init__(self, player_type):
+    def __init__(self, player_type:str):
         self.type = player_type
-        self.name = ""
+        
         self.gesture = self.get_gesture()
+        pass
 
     def get_gesture(self):
         if self.type == human:
@@ -19,6 +20,7 @@ class Player:
         else:
             print("player is an AI")
             gesture = choice(gesture_list)
+        pass
 
     @classmethod
     def get_players(cls, game_mode):
@@ -26,9 +28,10 @@ class Player:
             cls.player_one = Player(human)
             cls.player_two = Player(ai)
         elif game_mode == 2:
-            player_one = Player(human)
-            player_two = Player(human)
+            cls.player_one = Player(human)
+            cls.player_two = Player(human)
         else:
-            player_one = Player(ai)
-            player_two = Player(ai)
+            cls.player_one = Player(ai)
+            cls.player_two = Player(ai)
+        pass
     
