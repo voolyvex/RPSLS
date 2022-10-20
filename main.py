@@ -26,9 +26,11 @@ def welcome():
 def main():
     welcome()
     new_game = Game()
-    while new_game.winner == False:
-        new_game.run_game()
-        
+    # while new_game.winner == False:
+    new_game.run_game()
+    print("player 1 type is:", Player.player_one.type)
+    print("player 2 type is:", Player.player_two.type)  
+
     print("The game has ended!\nWe have a winner!")
     print(f"Game mode is {new_game.game_mode}")
     print(gesture_list)
