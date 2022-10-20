@@ -4,11 +4,9 @@
 # Step 4: display what gestures were picked by human or AI player
 # Step 5: Based on rules of the game Display who won or if it is a tie 
 # Step 6: Repeat process for additional rounds until there is a best-of-3 winner
-from game_settings import game_settings
+from player import *
 from game import Game
 
-
-gestures = ["Rock","Paper","Scissors","Lizard","Spock"]
 
 def welcome():
     print("Welcome to Rock Paper Scissors Lizard Spock.\n")
@@ -27,9 +25,12 @@ def welcome():
 
 def main():
     welcome()
-    new_game = Game(game_settings())
-    print(new_game.game_type)
-    print(gestures)
+    new_game = Game()
+    while new_game.winner == False:
+        new_game.run_game()
+    print("The game has ended!\nWe have a winner!")
+    print(f"Game mode is {new_game.game_mode}")
+    print(gesture_list)
 
 if __name__ == "__main__":
     main()
