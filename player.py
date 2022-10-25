@@ -1,5 +1,5 @@
+
 from random import choice
-from gesture import gesture_list
 
 human = "Human"
 ai = "AI"
@@ -8,30 +8,30 @@ class Player:
     
     def __init__(self, player_type:str):
         self.type = player_type
-        
-        self.gesture = self.get_gesture()
+        self.gesture = ""
+        self.wins = 0
+        self.gesture_list = ["Rock","Paper","Scissors","Lizard","Spock"]
         pass
 
     def get_gesture(self):
         if self.type == human:
-            gesture = int(input("Pick a gesture: 0 - 5"))
-            print(gesture_list[gesture])
-            return gesture_list[gesture]
+            pick_gesture = (input("Choose (0) for Rock.\nChoose (1) for Paper.\nChoose (2) for Scissors.\nChoose (3) for Lizard.\nChoose (4) for Spock.\nChoose your gesture: ")).strip()
+            while pick_gesture not in ["0","1","2","3","4"]:
+                pick_gesture = (input("Choose your gesture. (0) (1) (2) (3) or (4): ")).strip()
+            pick = self.gesture_list[int(pick_gesture)]
         else:
-            print("player is an AI")
-            gesture = choice(gesture_list)
+            pick = choice(self.gesture_list)
+        self.gesture = pick
+        return self.gesture
         pass
 
     @classmethod
     def get_players(cls, game_mode):
         if game_mode == 1:
-            cls.player_one = Player(human)
-            cls.player_two = Player(ai)
+            return (Player(human), Player(ai))
         elif game_mode == 2:
-            cls.player_one = Player(human)
-            cls.player_two = Player(human)
+            return (Player(human), Player(human))
         else:
-            cls.player_one = Player(ai)
-            cls.player_two = Player(ai)
+            return (Player(ai), Player(ai))
         pass
     

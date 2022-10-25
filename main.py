@@ -4,36 +4,16 @@
 # Step 4: display what gestures were picked by human or AI player
 # Step 5: Based on rules of the game Display who won or if it is a tie 
 # Step 6: Repeat process for additional rounds until there is a best-of-3 winner
-from player import *
 from game import Game
+from slow_print import slow_print
 
-
-def welcome():
-    print("Welcome to Rock Paper Scissors Lizard Spock.\n")
-    print("Each match will be best of three games")
-    print("Use the number keys to enter your selection\n")
-    print("Rock crushes Scissors")
-    print("Scissors cuts Paper")
-    print("Paper covers Rock")
-    print("Rock crushes Lizard")
-    print("Lizard poisons Spock")
-    print("Spock smashes Scissors")
-    print("Scissors decapitates Lizard")
-    print("Lizard eats Paper")
-    print("Paper disproves Spock")
-    print("Spock vaporizes Rock")
 
 def main():
-    welcome()
     new_game = Game()
     # while new_game.winner == False:
-    new_game.run_game()
-    print("player 1 type is:", Player.player_one.type)
-    print("player 2 type is:", Player.player_two.type)
-
-    print("The game has ended!\nWe have a winner!")
-    print(f"Game mode is {new_game.game_mode}")
-    print(gesture_list)
-
+    new_game.run()
+    
+    slow_print("The game has ended!\n")
+    
 if __name__ == "__main__":
     main()
