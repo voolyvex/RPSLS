@@ -55,29 +55,32 @@ class Game:
         # instantiate gesture objects
         rock, paper, scissors, lizard, spock = Rock(), Paper(), Scissors(), Lizard(), Spock()
 
-        # display players' chosen gestures
-        slow_print2(f"{p1.type} picks {p1.get_gesture()}! ")
-        slow_print2(f"{p2.type} has picked {p2.get_gesture}!\n")
+        # store and display players' chosen gestures
+        p1_gesture, p2_gesture = p1.get_gesture(), p2.get_gesture()
+        slow_print2(f"{p1.type} picks {p1_gesture}! ")
+        slow_print2(f"{p2.type} has picked {p2_gesture}!\n")
         
         # adjudicate winner
-        if p1.active_gesture == "Rock":
-            round_winner = rock.will_defeat_or_lose(p2.active_gesture)
-        elif p1.active_gesture == "Paper":
-            round_winner = paper.will_defeat_or_lose(p2.active_gesture)
-        elif p1.active_gesture == "Scissors":
-            round_winner = scissors.will_defeat_or_lose(p2.active_gesture)
-        elif p1.active_gesture == "Lizard":
-            round_winner = lizard.will_defeat_or_lose(p2.active_gesture)
-        else: # if p1 gesture is "Spock"
-            round_winner = spock.will_defeat_or_lose(p2.active_gesture)
+        if p1_gesture == "Rock":
+            round_winner = rock.will_defeat_or_lose(p2_gesture)
+        elif p1_gesture == "Paper":
+            round_winner = paper.will_defeat_or_lose(p2_gesture)
+        elif p1_gesture == "Scissors":
+            round_winner = scissors.will_defeat_or_lose(p2_gesture)
+        elif p1_gesture == "Lizard":
+            round_winner = lizard.will_defeat_or_lose(p2_gesture)
+        elif p1_gesture == "Spock":
+            round_winner = spock.will_defeat_or_lose(p2_gesture)
         
-        # add to a player's win_count if they won
+        # add to a player's win count if they won
         if round_winner == "1":
             p1.win_count += 1
+            print(f"Player 1 {p1.type} wins the round")
         elif round_winner == "2":
             p2.win_count += 1
+            print(f"Player 2 {p2.type} wins the round")
         elif round_winner == "tie":
-            slow_print2("It was a tie.\n")
+            slow_print2("It was a tie\n")
 
         # check if best-of-three was won
         self.check_for_winner(p1, p2)

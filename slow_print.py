@@ -10,4 +10,4 @@ def slow_print2(string_to_print):
     for letter in string_to_print:
         sys.stdout.write(letter)
         sys.stdout.flush()
-        time.sleep(0.009)
+        time.sleep(0.0075)
