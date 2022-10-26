@@ -1,60 +1,58 @@
 #from gesture import Gesture, gesture_list
-from player import *
+from player import Player
 from child_classes import rock, paper, scissors, lizard, spock
-from slow_print import slow_print
+from slow_print import slow_print, slow_print2
 class Game:
     def __init__(self):
         self.game_mode = self.get_game_mode()
         self.round = 1
         self.winner = False
-        self.player_one = None
-        self.player_two = None
-        self.player_tup = (self.player_one, self.player_two)
-        self.player_tup = Player.get_players(self.game_mode)
-
-        # self.rock = object
-        # self.paper = object
-        # self.scissors = object
-        # self.lizard = object
-        # self.spock = object
-
-        # self.p1_show = object
-        # self.p2_show = object
-        pass
-    
-    def welcome(self):
-        print("Welcome to Rock Paper Scissors Lizard Spock.\n")
-        print("Each match will be best of three games.")
-        print("Use the number keys to enter your selection.\n")
-        print("Rock crushes Scissors.")
-        print("Scissors cuts Paper.")
-        print("Paper covers Rock.")
-        print("Rock crushes Lizard.")
-        print("Lizard poisons Spock.")
-        print("Spock smashes Scissors.")
-        print("Scissors decapitates Lizard.")
-        print("Lizard eats Paper.")
-        print("Paper disproves Spock.")
-        print("Spock vaporizes Rock.")
-
-    def run(self):
-        self.welcome()
-        while self.winner == False:
-            print(f"Round {self.round} get ready, on Three...")
-            slow_print("One... Two....")
-            slow_print(".....")
-            print("Three!\n")
-            self.fight_logic()
             
-            self.round += 1
-        pass
+    def welcome(self, p1, p2):
+        slow_print2("\nWelcome to Rock Paper Scissors Lizard Spock!  ")
+        slow_print2("Each match will be best of three games.\n")
+        slow_print2("Humans use the number keys to enter a selection.\n")
+        slow_print2("Rock crushes Scissors..........Scissors cuts Paper\n")
+        slow_print2("Paper covers Rock..............Rock crushes Lizard\n")
+        slow_print2("Lizard poisons Spock...........Spock smashes Scissors\n")
+        slow_print2("Scissors decapitates Lizard....Lizard eats Paper\n")
+        slow_print2("Paper disproves Spock..........Spock vaporizes Rock\n")
+        slow_print2(f"Player 1 {p1.type} vs Player 2 {p2.type}\n")
 
     def get_game_mode(self):
         game_mode = input("\nChoose game mode (1) Human vs AI,\n(2) Human vs Human, (3) AI vs AI: ").strip()
         while game_mode not in ["1", "2", "3"]:
             game_mode = input("\nEnter (1) Human vs AI,\n(2) Human vs Human, or (3) AI vs AI: ").strip()
         return game_mode
+    
+    def get_players(self, game_mode):
+        human, ai = "Human", "AI"
+        if game_mode == "1":
+            p1 = Player(human)
+            p2 = Player(ai)
+        elif game_mode == "2":
+            p1 = Player(human)
+            p2 = Player(human)
+        else:
+            p1 = Player(ai)
+            p2 = Player(ai)
+        return p1, p2
+
+    def start_new_round(self):
+        print()
+        slow_print2(f"Round {self.round} get ready, on Three...\n")
+        slow_print2("One....... Two....... ")
+        slow_print2("Three!\n")
+
+    def run(self):
+        p1, p2 = self.get_players(self.game_mode)
+        self.welcome(p1, p2)
+        while not self.winner:
+            self.start_new_round()
+            self.determine_round_winner(p1, p2)
+            self.round += 1
         pass
+
     
     # @classmethod
     # def show(cls, p1:Player.gesture, p2:Player.gesture):
@@ -87,21 +85,24 @@ class Game:
     #     return result
     #     pass
         
-    def fight_logic(self, round_winner = 0):
-        print(f"{self.player_one.type} picks {self.player_one.get_gesture}.")
-        print(f"{self.player_two.type} has picked {self.player_two.get_gesture}.")
+    def determine_round_winner(self, p1, p2):
+        #players reveal gestures
+        slow_print2(f"{p1.type} picks {p1.active_gesture}! ")
+        slow_print2(f"{p2.type} has picked {p2.active_gesture}!\n")
+
+        #declare winner
         round_winner = 1
         if round_winner == 0:
-            Player.player_one.wins += 1
+            p1.win_count += 1
         elif round_winner == 1:
-            Player.player_two.wins += 1
-        self.win_logic()
+            p2.win_count += 1
+        self.check_for_winner(p1, p2)
 
-    def win_logic(self):
-        if Player.player_one.wins == 2:
-            slow_print("Player One is the winner.")
+    def check_for_winner(self, p1, p2):
+        if p1.win_count == 2:
+            slow_print2(f"\nPlayer 1 {p1.type} is the winner! ")
             self.winner = True
-        elif Player.player_two.wins == 2:
-            slow_print("Player Two is the winner.")
+        elif p2.win_count == 2:
+            slow_print2(f"\nPlayer 2 {p2.type} is the winner! ")
             self.winner = True
         pass
