@@ -1,27 +1,68 @@
-    
+
 class Gesture:
-    def __init__(self, name:str, strong_against:tuple, weak_against:tuple):
+    
+    def __init__(self, name:str):
         self.name = name
-        self.strong_against = strong_against
-        self.weak_against = weak_against
-        pass
+        
+    def will_defeat_or_lose(self):
+        print("We are the champions, my friends.")
 
 class Rock(Gesture):
-    def __init__(self, name: str, strong_against: tuple, weak_against: tuple):
-        super().__init__("Rock", (gesture_list[2], gesture_list[3]), (gesture_list[1], gesture_list[4]))
+    def __init__(self):
+        super().__init__("Rock")
+
+    def will_defeat_or_lose(self, p2_gesture: str):
+        if p2_gesture in ["Scissors", "Lizard"]:
+            return "1"
+        elif p2_gesture in ["Paper", "Spock"]:
+            return "2"
+        elif p2_gesture == self.name:
+            return "tie"
 
 class Paper(Gesture):
-    def __init__(self, name: str, strong_against: tuple, weak_against: tuple):
-        super().__init__("Paper", (gesture_list[0], gesture_list[4]), (gesture_list[2], gesture_list[3]))
+    def __init__(self):
+        super().__init__("Paper")
     
+    def will_defeat_or_lose(self, p2_gesture: str):
+        if p2_gesture in ["Rock", "Spock"]:
+            return "1"
+        elif p2_gesture in ["Scissors", "Lizard"]:
+            return "2"
+        elif p2_gesture == self.name:
+            return "tie"
+
 class Scissors(Gesture):
-    def __init__(self, name: str, strong_against: tuple, weak_against: tuple):
-        super().__init__("Scissors", (gesture_list[1], gesture_list[3]), (gesture_list[0], gesture_list[4]))
+    def __init__(self):
+        super().__init__("Scissors")
     
+    def will_defeat_or_lose(self, p2_gesture: str):
+        if p2_gesture in ["Paper", "Lizard"]:
+            return "1"
+        elif p2_gesture in ["Rock", "Spock"]:
+            return "2"
+        elif p2_gesture == self.name:
+            return "tie"
+
 class Lizard(Gesture):
-    def __init__(self, name: str, strong_against: tuple, weak_against: tuple):
-        super().__init__("Lizard", (gesture_list[1], gesture_list[4]), (gesture_list[0], gesture_list[2]))
+    def __init__(self):
+        super().__init__("Lizard")
+    
+    def will_defeat_or_lose(self, p2_gesture: str):
+        if p2_gesture in ["Paper", "Spock"]:
+            return "1"
+        elif p2_gesture in ["Scissors", "Rock"]:
+            return "2"
+        elif p2_gesture == self.name:
+            return "tie"
 
 class Spock(Gesture):
-    def __init__(self, name: str, strong_against: tuple, weak_against: tuple):
-        super().__init__("Spock", (gesture_list[0], gesture_list[2]), (gesture_list[1], gesture_list[3]))
+    def __init__(self):
+        super().__init__("Spock")
+    
+    def will_defeat_or_lose(self, p2_gesture: str):
+        if p2_gesture in ["Scissors", "Rock"]:
+            return "1"
+        elif p2_gesture in ["Paper", "Lizard"]:
+            return "2"
+        elif p2_gesture == self.name:
+            return "tie"

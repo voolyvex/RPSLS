@@ -1,7 +1,6 @@
 from random import choice
 
 class Player:
-    
     gesture_list = ["Rock","Paper","Scissors","Lizard","Spock"]
 
     def __init__(self, player_type:str):
