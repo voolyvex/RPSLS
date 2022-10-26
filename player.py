@@ -6,8 +6,7 @@ class Player:
     def __init__(self, player_type:str):
         self.type = player_type
         self.win_count = 0
-        self.active_gesture = self.get_gesture()
-
+        
     def get_gesture(self):
         if self.type == "Human":
             pick_gesture = input("Choose (1) for Rock.\nChoose (2) for Paper.\nChoose (3) for Scissors.\nChoose (4) for Lizard.\nChoose (5) for Spock.\nChoose your gesture: ").strip()

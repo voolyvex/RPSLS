@@ -56,8 +56,8 @@ class Game:
         rock, paper, scissors, lizard, spock = Rock(), Paper(), Scissors(), Lizard(), Spock()
 
         # display players' chosen gestures
-        slow_print2(f"{p1.type} picks {p1.active_gesture}! ")
-        slow_print2(f"{p2.type} has picked {p2.active_gesture}!\n")
+        slow_print2(f"{p1.type} picks {p1.get_gesture()}! ")
+        slow_print2(f"{p2.type} has picked {p2.get_gesture}!\n")
         
         # adjudicate winner
         if p1.active_gesture == "Rock":
