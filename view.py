@@ -51,7 +51,6 @@ class Ui_MainWindow(object):
         self.p1_image.setMinimumSize(QtCore.QSize(200, 150))
         self.p1_image.setMaximumSize(QtCore.QSize(200, 150))
         self.p1_image.setObjectName("p1_image")
-        self.p1_image.setPixmap(QtGui.QPixmap("lizard.jpg"))
         self.gridLayout.addWidget(self.p1_image, 0, 0, 1, 1)
         self.game_text1 = QtWidgets.QLabel(self.widget)
         font = QtGui.QFont()
