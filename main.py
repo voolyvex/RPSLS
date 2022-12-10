@@ -1,11 +1,12 @@
-from game import Game
-
+from controller import *
+from PyQt5 import *
 
 def main():
-    new_game = Game()
-    new_game.run()
-    print("The game has ended.")
-
+    app = QApplication([])
+    ui = Controller()
+    ui.show()
+    app.exec_()
+    
 
 if __name__ == "__main__":
     main()
