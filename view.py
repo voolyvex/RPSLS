@@ -1,6 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -31,13 +30,13 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label.setFont(font)
         self.label.setStyleSheet("color: rgb(255, 243, 217);\n"
-"border-color: rgb(0, 0, 127);")
+                                "border-color: rgb(0, 0, 127);")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.game_text2 = QtWidgets.QLabel(self.centralwidget)
         self.game_text2.setGeometry(QtCore.QRect(90, 307, 454, 56))
         self.game_text2.setStyleSheet("border-color: rgb(226, 255, 254);\n"
-"color: rgb(255, 255, 255);")
+                                "color: rgb(255, 255, 255);")
         self.game_text2.setAlignment(QtCore.Qt.AlignCenter)
         self.game_text2.setObjectName("game_text2")
         self.widget = QtWidgets.QWidget(self.centralwidget)
@@ -48,7 +47,6 @@ class Ui_MainWindow(object):
         self.gridLayout.setObjectName("gridLayout")
         # image 1
         self.p1_image = QtWidgets.QLabel(self.widget)
-        # self.p1_image.setEnabled(True)
         self.p1_image.setScaledContents(True)
         self.p1_image.setMinimumSize(QtCore.QSize(200, 150))
         self.p1_image.setMaximumSize(QtCore.QSize(200, 150))
@@ -65,6 +63,7 @@ class Ui_MainWindow(object):
         self.game_text1.setWordWrap(True)
         self.game_text1.setObjectName("game_text1")
         self.gridLayout.addWidget(self.game_text1, 0, 1, 1, 1)
+        # image 2
         self.p2_image = QtWidgets.QLabel(self.widget)
         self.p2_image.setScaledContents(True)
         self.p2_image.setMinimumSize(QtCore.QSize(200, 150))
@@ -79,7 +78,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(1, 1, 1, 1)
         self.horizontalLayout.setSpacing(1)
         self.horizontalLayout.setObjectName("horizontalLayout")
-# rock button
+        # gesture buttons
         self.rock_button = QtWidgets.QPushButton(self.widget1)
         self.rock_button.setMaximumSize(QtCore.QSize(100, 40))
         font = QtGui.QFont()
